@@ -1,7 +1,6 @@
 from feature_extractors.feature_extractor import FeatureExtractor, FeatureExtractors
 from essentia.standard import MonoLoader
 from feature_extractors.essentia_extractors import EssentiaFeatureExtractor, EssentiaVoiceExtractor
-# from feature_extractors.effects_extractor import EffectsExtractor
 from caption_generator import CaptionGenerator
 
 import argparse
@@ -10,7 +9,6 @@ import json
 
 import warnings
 
-warnings.filterwarnings("ignore", category=DeprecationWarning, module="essentia")
 
 class MusicCaptioner:
 	def __init__(self, config_file_path):
@@ -76,11 +74,8 @@ class MusicCaptioner:
 			if len(feature_tags) > 0:
 				audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags[0]
 
-		print("TAGS ", audio_tags)
 		prompt = self.caption_generator.create_prompt(audio_tags)
-		print("PROMPT ", prompt)
 		caption = self.caption_generator.generate_caption(prompt)
-		print("CAPTION ", caption)
 		audio_tags["caption"] = caption
 		audio_tags["location"] = snippet_path
 		return audio_tags
