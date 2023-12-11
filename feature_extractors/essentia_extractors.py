@@ -51,8 +51,6 @@ class EssentiaFeatureExtractor(FeatureExtractor):
 		tags = [tags[i] for i in ind]
 		confidence_score=np.round((np.array(confidence_score)[ind]).tolist(),4).tolist()
 
-		print("!!!!!!!!tags ", tags)
-
 		return tags, confidence_score
 
 	def get_tag_type(self):
