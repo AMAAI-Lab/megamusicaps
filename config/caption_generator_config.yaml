@@ -37,3 +37,9 @@
     "model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtt-discogs-effnet-1.pb"
     "model_metadata": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtt-discogs-effnet-1.json"
     "embedding_model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+  "beatnet_extractor":
+    "active": True
+    "model": "DBN"
+    "mode": "offline"
+    "plot": []
+    "thread": False

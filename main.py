@@ -1,6 +1,8 @@
 from feature_extractors.feature_extractor import FeatureExtractor, FeatureExtractors
 from essentia.standard import MonoLoader
 from feature_extractors.essentia_extractors import EssentiaFeatureExtractor, EssentiaVoiceExtractor
+from feature_extractors.beatnet_extractor import BeatNetExtractor
+
 from caption_generator import CaptionGenerator
 
 import argparse
@@ -45,6 +47,10 @@ class MusicCaptioner:
 		if self.configs["extractors"]["gender_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.GENDER_EXTRACTOR.value, EssentiaVoiceExtractor("gender", self.configs["extractors"]["gender_extractor"]["model"], self.configs["extractors"]["gender_extractor"]["model_metadata"], self.configs["extractors"]["gender_extractor"]["embedding_model"]))
 			self.active_extractors.append(FeatureExtractors.GENDER_EXTRACTOR.value)
+
+		if self.configs["extractors"]["beatnet_extractor"]["active"] :
+			self.feature_extractors.insert(FeatureExtractors.BEATNET_EXTRACTOR.value, BeatNetExtractor("beats", self.configs["extractors"]["beatnet_extractor"]["model"], self.configs["extractors"]["beatnet_extractor"]))
+			self.active_extractors.append(FeatureExtractors.BEATNET_EXTRACTOR.value)
 
 		self.caption_generator = CaptionGenerator(self.configs["caption_generator"]["api_key"], self.configs["caption_generator"]["model_id"])
 
