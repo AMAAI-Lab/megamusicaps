@@ -6,7 +6,8 @@ class FeatureExtractors(Enum):
 	INSTRUMENT_EXTRACTOR = 2
 	AUTO_EXTRACTOR = 3
 	VOICE_EXTRACTOR = 4
-	GENDER_EXTRACTOR = 4
+	GENDER_EXTRACTOR = 5
+	BEATNET_EXTRACTOR = 6
 
 # Base class for feature extraction
 class FeatureExtractor:
