@@ -54,10 +54,6 @@ class MusicCaptioner:
 			configs = yaml.safe_load(f)
 		return configs
 
-	def load_audio(self, audio_path):
-		audio = MonoLoader(filename=audio_path, sampleRate=16000, resampleQuality=4)()
-		return audio
-
 	def get_audio_paths(self, file_path):
 		audio_paths = []
 		with open(file_path, 'r') as f:
@@ -67,12 +63,10 @@ class MusicCaptioner:
 		return audio_paths
 
 	def caption_audio(self, snippet_path):
-		audio_features = self.load_audio(snippet_path)
 		audio_tags = {}
 		for extractor in self.active_extractors:
-			feature_tags, feature_cs = self.feature_extractors[extractor].extract_features(audio_features)
-			if len(feature_tags) > 0:
-				audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags[0]
+			feature_tags = self.feature_extractors[extractor].extract_features(snippet_path)
+			audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags
 
 		prompt = self.caption_generator.create_prompt(audio_tags)
 		caption = self.caption_generator.generate_caption(prompt)
