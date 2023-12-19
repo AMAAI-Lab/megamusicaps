@@ -1,3 +1,4 @@
+from .feature_extractor import FeatureExtractor
 import numpy as np
 from scipy.signal import find_peaks, correlate
 
@@ -16,11 +17,16 @@ class BeatNetExtractor(FeatureExtractor):
 	def extract_features(self, audio_path):
 		beats = self.get_beats(audio_path)
 		bpm, repeating_pattern, inflection_points = self.identify_pattern(beats)
-		tags = [bpm, repeating_pattern, inflection_points]
+
+		tags = dict()
+		tags["bpm"] = bpm
+		tags["beat_pattern"] = list(repeating_pattern)
+
+		# tags = [bpm, repeating_pattern, inflection_points]
 		return tags
 
 	def get_beats(self, audio_path):
-		return estimator.process(audio_path)
+		return self.estimator.process(audio_path)
 
 	def identify_pattern(self, beats):
 	    # Extract timestamps and beats
@@ -42,7 +48,7 @@ class BeatNetExtractor(FeatureExtractor):
 	    # Find peaks in autocorrelation to identify repeating pattern
 	    pattern_indices, _ = find_peaks(autocorr, height=0)
 
-	    repeating_pattern = beat_values[:pattern_indices[0] + 1]
+	    repeating_pattern = beat_values[:pattern_indices[0]]
 
 	    return bpm, repeating_pattern, inflection_points
 
