@@ -1,5 +1,4 @@
 from feature_extractors.feature_extractor import FeatureExtractor, FeatureExtractors
-from essentia.standard import MonoLoader
 from feature_extractors.essentia_extractors import EssentiaFeatureExtractor, EssentiaVoiceExtractor
 from feature_extractors.beatnet_extractor import BeatNetExtractor
 
