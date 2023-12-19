@@ -1,4 +1,5 @@
 from .feature_extractor import FeatureExtractor
+from essentia.standard import MonoLoader
 from essentia.standard import TensorflowPredictEffnetDiscogs, TensorflowPredict2D
 import json
 import numpy as np
@@ -38,7 +39,7 @@ class EssentiaFeatureExtractor(FeatureExtractor):
 		tags, cs = self.get_tags(embeddings)
 		if len(tags) > 0:
 			return tags[0]
-		else
+		else: 
 			return ''
 
 	def get_tags(self, embeddings):
@@ -79,4 +80,4 @@ class EssentiaVoiceExtractor(EssentiaFeatureExtractor):
 		ind = np.argmax(mean_act)
 		tag=self.model_metadata['classes'][ind]
 
-		return tag
+		return [tag], mean_act.tolist()
