@@ -7,7 +7,7 @@ class CaptionGenerator:
 
         self.client = OpenAI(api_key = self.api_key) 
 
-        self.prompt_base = "I am creating a dataset for a prompt based music generation system. Generate a prompt that can be used as the label for a music snippet that has the following features:\n"
+        self.prompt_base = "I am creating a dataset for a prompt based music generation system. Generate a prompt that can be used as the label for a music snippet that has the following features. For the chord features, could you summarise the chord progression generally without too much detail and mention any trends or special points that you observe. Ignore all the No Chords (N):\n"
 
     def set_prompt_base(self, prompt_base):
         self.prompt_base = prompt_base
