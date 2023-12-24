@@ -43,3 +43,7 @@
     "mode": "offline"
     "plot": []
     "thread": False
+  "btc_chord_extractor":
+    "active": True
+    "model": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/test/btc_model.pt"
+    "config_file": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/run_config.yaml"
