@@ -28,37 +28,56 @@ class MusicCaptioner:
 		if self.configs["extractors"]["mood_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.MOOD_EXTRACTOR.value, EssentiaFeatureExtractor("mood", self.configs["extractors"]["mood_extractor"]["model"], self.configs["extractors"]["mood_extractor"]["model_metadata"], self.configs["extractors"]["mood_extractor"]["embedding_model"], 5, 0.1))
 			self.active_extractors.append(FeatureExtractors.MOOD_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.MOOD_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["genre_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.GENRE_EXTRACTOR.value, EssentiaFeatureExtractor("genre", self.configs["extractors"]["genre_extractor"]["model"], self.configs["extractors"]["genre_extractor"]["model_metadata"], self.configs["extractors"]["genre_extractor"]["embedding_model"], 4, 0.1))
 			self.active_extractors.append(FeatureExtractors.GENRE_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.GENRE_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["instrument_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.INSTRUMENT_EXTRACTOR.value, EssentiaFeatureExtractor("instrument", self.configs["extractors"]["instrument_extractor"]["model"], self.configs["extractors"]["instrument_extractor"]["model_metadata"], self.configs["extractors"]["instrument_extractor"]["embedding_model"], 7, 0.1))
 			self.active_extractors.append(FeatureExtractors.INSTRUMENT_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.INSTRUMENT_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["auto_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.AUTO_EXTRACTOR.value, EssentiaFeatureExtractor("autotags", self.configs["extractors"]["auto_extractor"]["model"], self.configs["extractors"]["auto_extractor"]["model_metadata"], self.configs["extractors"]["auto_extractor"]["embedding_model"], 8, 0.1))
 			self.active_extractors.append(FeatureExtractors.AUTO_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.AUTO_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["voice_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.VOICE_EXTRACTOR.value, EssentiaVoiceExtractor("voice", self.configs["extractors"]["voice_extractor"]["model"], self.configs["extractors"]["voice_extractor"]["model_metadata"], self.configs["extractors"]["voice_extractor"]["embedding_model"]))
 			self.active_extractors.append(FeatureExtractors.VOICE_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.VOICE_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["gender_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.GENDER_EXTRACTOR.value, EssentiaVoiceExtractor("gender", self.configs["extractors"]["gender_extractor"]["model"], self.configs["extractors"]["gender_extractor"]["model_metadata"], self.configs["extractors"]["gender_extractor"]["embedding_model"]))
 			self.active_extractors.append(FeatureExtractors.GENDER_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.GENDER_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["beatnet_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.BEATNET_EXTRACTOR.value, BeatNetExtractor("beats", self.configs["extractors"]["beatnet_extractor"]["model"], self.configs["extractors"]["beatnet_extractor"]))
 			self.active_extractors.append(FeatureExtractors.BEATNET_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.BEATNET_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["btc_chord_extractor"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.BTC_CHORD_EXTRACTOR.value, BTCChordExtractor("chords", self.configs["extractors"]["btc_chord_extractor"]["model"], self.configs["extractors"]["btc_chord_extractor"]["config_file"]))
 			self.active_extractors.append(FeatureExtractors.BTC_CHORD_EXTRACTOR.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.BTC_CHORD_EXTRACTOR.value, None)
+
 		if self.configs["extractors"]["gender_classifier"]["active"] :
 			self.feature_extractors.insert(FeatureExtractors.GENDER_CLASSIFIER.value, GenderClassifier("gender", self.configs["extractors"]["gender_classifier"]["model"], self.configs["extractors"]["gender_classifier"]))
 			self.active_extractors.append(FeatureExtractors.GENDER_CLASSIFIER.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.GENDER_CLASSIFIER.value, None)
 
 		self.caption_generator = CaptionGenerator(self.configs["caption_generator"]["api_key"], self.configs["caption_generator"]["model_id"])
 
