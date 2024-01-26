@@ -1,6 +1,19 @@
 "files":
-  "input": "/proj/megamusicaps/files/audio_files.json"
+  "raw_input": "/proj/megamusicaps/files/audio_files.json"
+  "input": "/proj/megamusicaps/files/preprocessed_audio_files.json"
   "output": "/proj/megamusicaps/files/captions.json"
+
+"paths":
+  "temp": "/proj/megamusicaps/files/temp/"
+  "source_separated_audio": "/proj/megamusicaps/files/source_separated_audio"
+  "split_audio": "/proj/megamusicaps/files/split_audio"
+
+"preprocess":
+  "split":
+    "length": 30.0
+    "remove_silence": true
+  "separate_source":
+    "model": "spleeter:4stems"
 
 "caption_generator":
   "api_key": "xxxxxxxxxx"
