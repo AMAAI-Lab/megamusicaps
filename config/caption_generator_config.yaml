@@ -22,45 +22,54 @@
 "extractors":
   "mood_extractor":
     "active": True
+    "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "genre_extractor":
     "active": True
+    "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "instrument_extractor":
     "active": True
+    "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "voice_extractor":
     "active": True
+    "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "gender_extractor":
     "active": False
+    "source": "vocals"
     "model": "/proj/megamusicaps/essentia_models/gender-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/gender-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "auto_extractor":
     "active": True
+    "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/mtt-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtt-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "beatnet_extractor":
     "active": True
+    "source": "drums"
     "model": "DBN"
     "mode": "offline"
     "plot": []
     "thread": False
   "btc_chord_extractor":
     "active": True
+    "source": "other"
     "model": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/test/btc_model.pt"
     "config_file": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/run_config.yaml"
   "gender_classifier":
     "active": True
+    "source": "vocals"
     "model": "/proj/megamusicaps/feature_extractors/gender_recognition/models/model.h5"
     "mel": True
