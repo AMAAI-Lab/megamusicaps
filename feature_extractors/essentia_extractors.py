@@ -1,4 +1,5 @@
 from .feature_extractor import FeatureExtractor
+from essentia.standard import MonoLoader
 from essentia.standard import TensorflowPredictEffnetDiscogs, TensorflowPredict2D
 import json
 import numpy as np
@@ -28,10 +29,18 @@ class EssentiaFeatureExtractor(FeatureExtractor):
 	def set_tag_threshold(self, tag_threshold):
 		self.tag_threshold = tag_threshold
 
-	def extract_features(self, audio_features):
+	def load_audio(self, audio_path):
+		audio = MonoLoader(filename=audio_path, sampleRate=16000, resampleQuality=4)()
+		return audio
+
+	def extract_features(self, snippet_path):
+		audio_features = self.load_audio(snippet_path)
 		embeddings = self.embedding_model(audio_features)
 		tags, cs = self.get_tags(embeddings)
-		return tags, cs
+		if len(tags) > 0:
+			return tags[0]
+		else: 
+			return ''
 
 	def get_tags(self, embeddings):
 		predictions = self.model(embeddings)

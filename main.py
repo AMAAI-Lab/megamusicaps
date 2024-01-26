@@ -1,6 +1,7 @@
 from feature_extractors.feature_extractor import FeatureExtractor, FeatureExtractors
-from essentia.standard import MonoLoader
 from feature_extractors.essentia_extractors import EssentiaFeatureExtractor, EssentiaVoiceExtractor
+from feature_extractors.beatnet_extractor import BeatNetExtractor
+
 from caption_generator import CaptionGenerator
 
 import argparse
@@ -46,6 +47,10 @@ class MusicCaptioner:
 			self.feature_extractors.insert(FeatureExtractors.GENDER_EXTRACTOR.value, EssentiaVoiceExtractor("gender", self.configs["extractors"]["gender_extractor"]["model"], self.configs["extractors"]["gender_extractor"]["model_metadata"], self.configs["extractors"]["gender_extractor"]["embedding_model"]))
 			self.active_extractors.append(FeatureExtractors.GENDER_EXTRACTOR.value)
 
+		if self.configs["extractors"]["beatnet_extractor"]["active"] :
+			self.feature_extractors.insert(FeatureExtractors.BEATNET_EXTRACTOR.value, BeatNetExtractor("beats", self.configs["extractors"]["beatnet_extractor"]["model"], self.configs["extractors"]["beatnet_extractor"]))
+			self.active_extractors.append(FeatureExtractors.BEATNET_EXTRACTOR.value)
+
 		self.caption_generator = CaptionGenerator(self.configs["caption_generator"]["api_key"], self.configs["caption_generator"]["model_id"])
 
 	def load_configs(self, file_path):
@@ -53,10 +58,6 @@ class MusicCaptioner:
 		with open(file_path, 'r') as f:
 			configs = yaml.safe_load(f)
 		return configs
-
-	def load_audio(self, audio_path):
-		audio = MonoLoader(filename=audio_path, sampleRate=16000, resampleQuality=4)()
-		return audio
 
 	def get_audio_paths(self, file_path):
 		audio_paths = []
@@ -67,12 +68,10 @@ class MusicCaptioner:
 		return audio_paths
 
 	def caption_audio(self, snippet_path):
-		audio_features = self.load_audio(snippet_path)
 		audio_tags = {}
 		for extractor in self.active_extractors:
-			feature_tags, feature_cs = self.feature_extractors[extractor].extract_features(audio_features)
-			if len(feature_tags) > 0:
-				audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags[0]
+			feature_tags = self.feature_extractors[extractor].extract_features(snippet_path)
+			audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags
 
 		prompt = self.caption_generator.create_prompt(audio_tags)
 		caption = self.caption_generator.generate_caption(prompt)
