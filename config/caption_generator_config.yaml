@@ -1,6 +1,6 @@
 "files":
-  "input": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/files/audio_files.json"
-  "output": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/files/captions.json"
+  "input": "/proj/megamusicaps/files/audio_files.json"
+  "output": "/proj/megamusicaps/files/captions.json"
 
 "caption_generator":
   "api_key": "xxxxxxxxxx"
@@ -9,37 +9,41 @@
 "extractors":
   "mood_extractor":
     "active": True
-    "model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.pb"
-    "model_metadata": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.json"
-    "embedding_model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.pb"
+    "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.json"
+    "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "genre_extractor":
     "active": True
-    "model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.pb"
-    "model_metadata": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.json"
-    "embedding_model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.pb"
+    "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.json"
+    "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "instrument_extractor":
     "active": True
-    "model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.pb"
-    "model_metadata": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.json"
-    "embedding_model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.pb"
+    "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.json"
+    "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "voice_extractor":
     "active": True
-    "model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.pb"
-    "model_metadata": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.json"
-    "embedding_model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "model": "/proj/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.pb"
+    "model_metadata": "/proj/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.json"
+    "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "gender_extractor":
     "active": True
-    "model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/gender-discogs-effnet-1.pb"
-    "model_metadata": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/gender-discogs-effnet-1.json"
-    "embedding_model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "model": "/proj/megamusicaps/essentia_models/gender-discogs-effnet-1.pb"
+    "model_metadata": "/proj/megamusicaps/essentia_models/gender-discogs-effnet-1.json"
+    "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "auto_extractor":
     "active": True
-    "model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtt-discogs-effnet-1.pb"
-    "model_metadata": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/mtt-discogs-effnet-1.json"
-    "embedding_model": "/Users/anuradhachopra/repositories/music_captioning/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "model": "/proj/megamusicaps/essentia_models/mtt-discogs-effnet-1.pb"
+    "model_metadata": "/proj/megamusicaps/essentia_models/mtt-discogs-effnet-1.json"
+    "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "beatnet_extractor":
     "active": True
     "model": "DBN"
     "mode": "offline"
     "plot": []
     "thread": False
+  "btc_chord_extractor":
+    "active": True
+    "model": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/test/btc_model.pt"
+    "config_file": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/run_config.yaml"
