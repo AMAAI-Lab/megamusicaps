@@ -47,8 +47,10 @@ class BeatNetExtractor(FeatureExtractor):
 
 	    # Find peaks in autocorrelation to identify repeating pattern
 	    pattern_indices, _ = find_peaks(autocorr, height=0)
-
-	    repeating_pattern = beat_values[:pattern_indices[0]]
+	    if len(pattern_indices) > 0:
+	    	repeating_pattern = beat_values[:pattern_indices[0]]
+	    else:
+	    	repeating_pattern = []
 
 	    return bpm, repeating_pattern, inflection_points
 
