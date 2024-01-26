@@ -16,9 +16,19 @@ class FeatureExtractor:
 	def __init__(self, model):
 		self.features = {}
 		self.model = model
+		self.source = "raw"
 
 	def get_tag_type(self):
 		raise NotImplementedError("Subclasses must implement this method")
 
 	def extract_features(self):
 		raise NotImplementedError("Subclasses must implement this method")
+
+	def set_source(self, source):
+		if source not in ["raw", "vocals", "drums", "bass", "other"]:
+			self.source = "raw"
+		else:
+			self.source = source
+
+	def get_source(self):
+		return self.source
