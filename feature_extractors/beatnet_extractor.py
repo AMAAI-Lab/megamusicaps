@@ -29,30 +29,35 @@ class BeatNetExtractor(FeatureExtractor):
 		return self.estimator.process(audio_path)
 
 	def identify_pattern(self, beats):
-	    # Extract timestamps and beats
-	    timestamps, beat_values = beats[:, 0], beats[:, 1]
 
-	    # Calculate time differences between consecutive beats
-	    time_diff = np.diff(timestamps)
+		if len(beats) == 0:
+				# Handle the case where beats array is empty
+				return [], [], []
 
-	    # Calculate BPM (beats per minute)
-	    bpm = 60 / np.mean(time_diff)
+		# Extract timestamps and beats
+		timestamps, beat_values = beats[:, 0], beats[:, 1]
 
-	    # Find inflection points where BPM changes
-	    inflection_points, _ = find_peaks(-time_diff, height=0)
+		# Calculate time differences between consecutive beats
+		time_diff = np.diff(timestamps)
 
-	    # Extract the beat pattern using autocorrelation
-	    autocorr = correlate(beat_values, beat_values, mode='full')
-	    autocorr = autocorr[len(autocorr)//2:]
+		# Calculate BPM (beats per minute)
+		bpm = 60 / np.mean(time_diff)
 
-	    # Find peaks in autocorrelation to identify repeating pattern
-	    pattern_indices, _ = find_peaks(autocorr, height=0)
-	    if len(pattern_indices) > 0:
-	    	repeating_pattern = beat_values[:pattern_indices[0]]
-	    else:
-	    	repeating_pattern = []
+		# Find inflection points where BPM changes
+		inflection_points, _ = find_peaks(-time_diff, height=0)
 
-	    return bpm, repeating_pattern, inflection_points
+		# Extract the beat pattern using autocorrelation
+		autocorr = correlate(beat_values, beat_values, mode='full')
+		autocorr = autocorr[len(autocorr)//2:]
+
+		# Find peaks in autocorrelation to identify repeating pattern
+		pattern_indices, _ = find_peaks(autocorr, height=0)
+		if len(pattern_indices) > 0:
+			repeating_pattern = beat_values[:pattern_indices[0]]
+		else:
+			repeating_pattern = []
+
+		return bpm, repeating_pattern, inflection_points
 
 	def get_tag_type(self):
 		return self.tag_type
