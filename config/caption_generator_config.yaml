@@ -28,7 +28,7 @@
     "model_metadata": "/proj/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
   "gender_extractor":
-    "active": True
+    "active": False
     "model": "/proj/megamusicaps/essentia_models/gender-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/gender-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
@@ -47,3 +47,7 @@
     "active": True
     "model": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/test/btc_model.pt"
     "config_file": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/run_config.yaml"
+  "gender_classifier":
+    "active": True
+    "model": "/proj/megamusicaps/feature_extractors/gender_recognition/models/model.h5"
+    "mel": True
