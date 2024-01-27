@@ -1,10 +1,14 @@
-# Change Log
+*********
+Changelog
+*********
 
 All important and notable changes to the megamusicaps projects
 
-## [0.0.6] - 2024-01-27
- 
-### ✨ Added
+0.0.6 (2024-01-27)
+==================
+
+✨ Added
+---------
 
 * Add simple gui to listen to snippet and read audio
 * Add script to create json file required by pre-processing script, which takes in directories and puts all mp3 files into the output json
@@ -14,84 +18,101 @@ All important and notable changes to the megamusicaps projects
 Contributor(s): annabeth97c
 
 
-## [0.0.5] - 2024-01-26
+0.0.5 (2024-01-26)
+==================
  
-### ✨ Added
+✨ Added
+---------
 
 * Add source separation code in feature extractors directory
 * Create preprocessing script to allow splitting original audio into 30 second segments
 * Add source separation function to preprocessing step for each 30 second segment
 * Create new input json with paths to new 30 second segment files
 
-### ⚡️ Changed
+⚡️ Changed
+-----------
 
 * Modified main loop to allow choosing source from "raw", "vocals", "drums", "other", "bass" for each extractor, to allow for better tag extraction
 * Configured beat extractor to use "drums"
 * Configured gender extractor to use "vocals"
 * Change gender extractor to classify based on threshold. If neutral, outputs inconclusive
  
-### 🛠️ Fixed
+🛠️ Fixed
+---------
 
 * Add fix to beat extractor to check for too few peaks before generating repeated pattern to prevent crash
 
 Contributor(s): annabeth97c
 
 
-## [0.0.4] - 2023-12-25
+0.0.4 (2023-12-25)
+==================
  
-### ✨ Added
+✨ Added
+---------
 
 * Add gender classification by voice inference module
 * Add gender extractor class that inherits from feuture extractor
 * Add naive post-processing to output tag as "male" or "female"
 
-### ⚡️ Changed
+⚡️ Changed
+-----------
 
 * Deactivate essentia gender extractor in config file
  
-### 🛠️ Fixed
+🛠️ Fixed
+---------
 
 * Maintain correct size of extractors list by appending None to the extractor list when extractor is disabled. Previously toggling an extractor to be disabled caused a crash
 
 Contributor(s): annabeth97c
 
 
-## [0.0.3] - 2023-12-24
+0.0.3 (2023-12-24)
+==================
  
-### ✨ Added
+✨ Added
+---------
 
 * Add chord extraction inference scripts and utils
 * Create chord extractor class inheriting from feature extractor base class
    
-### ⚡️ Changed
+⚡️ Changed
+-----------
 
 * Update prompt to ask for a more summarised response regarding chords 
 
 Contributor(s): annabeth97c
 
 
-## [0.0.2] - 2023-12-20
+0.0.2 (2023-12-20)
+==================
  
-### ✨ Added
+✨ Added
+---------
 
 * Add beatnet extractor inheriting from feature extractor base class
 * Add beat detection inference module
 * Add naive post processing of beat to get bpm, rhythm and repeated pattern
    
-### ⚡️ Changed
+⚡️ Changed
+-----------
 
 * Load audio within feature extractor instead of in the main process to allow different ways of loading
  
-### 🛠️ Fixed
+🛠️ Fixed
+---------
 
 * Change output of get_tags in essentia extractor to be a list 
 
 Contributor(s): annabeth97c
 
  
-## [0.0.1] - 2023-12-15
+0.0.1 (2023-12-15)
+==================
  
-### ✨ Added
+✨ Added
+---------
 
 * Create modular pipeline in main.py for:
   * loading audio
@@ -105,20 +126,24 @@ Contributor(s): annabeth97c
 * Add conda environment yaml for ease of set up
 * Add readme for better documentation
    
-### ⚡️ Changed
+⚡️ Changed
+-----------
 
 * Moved audio preprocessing scripts to utility directory
 
-### 🗑️ Removed
+🗑️ Removed
+-----------
 
 * Original essentia scripts
 
 Contributor(s): annabeth97c
 
 
-## [0.0.0] - 2023-11-21
+0.0.0 (2023-11-21)
+==================
  
-### ✨ Added
+✨ Added
+---------
 
 * Essentia tag extraction system
 * Simple preprocessing script for splitting
