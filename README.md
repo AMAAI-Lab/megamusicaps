@@ -50,6 +50,18 @@ Create / modify the configuration file (config/caption_generator_config.yaml) wi
 
 ### 4. Run the Captioning System
 
+#### Environment
+
+Open an interactive terminal with the docker container
+```
+docker exec -it megamusicaps_container /bin/bash
+```
+
+Activate conda environment in the interactive terminal
+```
+conda activate megamusicaps
+```
+
 #### Preprocess
 
 Generate raw input json file for all mp3 files in given directory. Set directories with mp3 files in utils/create_input_json.py at line 23 to 27.
