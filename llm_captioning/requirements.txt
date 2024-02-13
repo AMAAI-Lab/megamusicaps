@@ -1,0 +1,11 @@
+accelerate==0.26.1
+datasets==2.16.1
+fschat==0.2.36
+numpy==1.26.4
+pandas==2.2.0
+peft==0.7.1
+torch==2.1.2+cu118
+torchaudio==2.1.2+cu118
+tqdm==4.66.1
+transformers==4.36.2
+wandb==0.16.2
