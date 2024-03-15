@@ -16,6 +16,7 @@ import json
 import warnings
 
 import time
+from tqdm import tqdm
 
 class MusicCaptioner:
 	def __init__(self, config_file_path):
@@ -142,8 +143,13 @@ class MusicCaptioner:
 	def caption_all(self):
 		audio_paths = self.get_audio_paths(self.input_file_path)
 		audio_tags = []
-		for audio_path in audio_paths:
-			audio_tags.append(self.caption_audio(audio_path))
+		for audio_path in tqdm(audio_paths, desc="Captioning Progress", unit="audio"):
+			try:
+				caption = self.caption_audio(audio_path)
+			except:
+				print("Error captioning : ", audio_path)
+				caption = {"location": audio_path, "caption": "!!!Error"}
+			audio_tags.append(caption)
 		return audio_tags
 
 	def save_captions(self, audio_tags):
