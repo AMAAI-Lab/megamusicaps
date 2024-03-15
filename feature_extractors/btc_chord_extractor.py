@@ -48,9 +48,9 @@ class BTCChordExtractor(FeatureExtractor):
 			logger.info("restore model")
 
 	def extract_features(self, audio_path):
-		logger.info("Processing audio file: %s" % audio_path)
+		# logger.info("Processing audio file: %s" % audio_path)
 		feature, feature_per_second, song_length_second = audio_file_to_features(audio_path, self.config)
-		logger.info("Audio file loaded and feature computation success : %s" % audio_path)
+		# logger.info("Audio file loaded and feature computation success : %s" % audio_path)
 
 		feature = feature.T
 		feature = (feature - self.mean) / self.std
@@ -83,8 +83,6 @@ class BTCChordExtractor(FeatureExtractor):
 							lines.append('%.3f %.3f %s\n' % (
 								start_time, time_unit * (n_timestep * t + i), self.idx_to_chord[prev_chord]))
 						break
-
-		print("Features ", lines)
 
 		return lines
 
