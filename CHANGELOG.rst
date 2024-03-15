@@ -4,6 +4,14 @@ Changelog
 
 All important and notable changes to the megamusicaps projects
 
+0.0.7 (2024-03-15)
+==================
+
+⚡️ Changed
+-----------
+
+* In btc chord extractor configs, reduce inst len to 9 as some audio files can be slightly lesser than 10 seconds (musicaps) .This will prevent chord extraction failures for shorter files.
+
 0.0.6 (2024-01-27)
 ==================
 
