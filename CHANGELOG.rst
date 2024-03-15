@@ -4,6 +4,14 @@ Changelog
 
 All important and notable changes to the megamusicaps projects
 
+0.0.7 (2024-03-15)
+==================
+
+⚡️ Changed
+-----------
+* caption_generator.py: Added examples of output to prompt to improve generated captions from GPT
+
+
 0.0.6 (2024-01-27)
 ==================
 
