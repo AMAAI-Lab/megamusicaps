@@ -2,6 +2,7 @@ from feature_extractors.feature_extractor import FeatureExtractor, FeatureExtrac
 from feature_extractors.essentia_extractors import EssentiaFeatureExtractor, EssentiaVoiceExtractor
 from feature_extractors.beatnet_extractor import BeatNetExtractor
 from feature_extractors.btc_chord_extractor import BTCChordExtractor
+from feature_extractors.key_classification_extractor import KeyClassificationExtractor
 
 import os
 
@@ -104,6 +105,14 @@ class MusicCaptioner:
 			self.active_extractors.append(FeatureExtractors.GENDER_CLASSIFIER.value)
 		else:
 			self.feature_extractors.insert(FeatureExtractors.GENDER_CLASSIFIER.value, None)
+
+		if self.configs["extractors"]["key_classifier"]["active"] :
+			self.feature_extractors.insert(FeatureExtractors.KEY_CLASSIFIER.value, KeyClassificationExtractor("key", self.configs["extractors"]["key_classifier"]["model"], self.configs["extractors"]["key_classifier"]))
+			if ("source" in self.configs["extractors"]["key_classifier"].keys()):
+				self.feature_extractors[FeatureExtractors.KEY_CLASSIFIER.value].set_source(self.configs["extractors"]["key_classifier"]["source"])
+			self.active_extractors.append(FeatureExtractors.KEY_CLASSIFIER.value)
+		else:
+			self.feature_extractors.insert(FeatureExtractors.KEY_CLASSIFIER.value, None)
 
 		self.caption_generator = CaptionGenerator(self.configs["caption_generator"]["api_key"], self.configs["caption_generator"]["model_id"])
 
