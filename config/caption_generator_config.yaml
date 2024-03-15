@@ -15,6 +15,9 @@
   "separate_source":
     "model": "spleeter:4stems"
 
+"pipeline":
+  "enable_caption_generation": False
+
 "caption_generator":
   "api_key": "xxxxxxxxxx"
   "model_id": "gpt-3.5-turbo"

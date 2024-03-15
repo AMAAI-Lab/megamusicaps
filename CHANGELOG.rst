@@ -17,6 +17,8 @@ All important and notable changes to the megamusicaps projects
 * feature_extractors/key_classification: Add key classification extractor class,inference code and models
 * main.py: Integrate key classification with main pipeline
 * caption_generator_config.yaml: Add key classifier configs to caption generator configs
+* In main process, toggle caption generation with flag, loaded from config file
+
 
 🛠️ Fixed
 ---------

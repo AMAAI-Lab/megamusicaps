@@ -25,6 +25,8 @@ class MusicCaptioner:
 
 		self.configs = self.load_configs(self.config_file_path)
 
+		self.enable_caption_generation = self.configs["pipeline"]["enable_caption_generation"]
+
 		self.input_file_path = self.configs["files"]["input"]
 		self.output_file_path = self.configs["files"]["output"]
 		self.source_separated_file_dir = self.configs["paths"]["source_separated_audio"]
@@ -143,9 +145,10 @@ class MusicCaptioner:
 			feature_tags = self.feature_extractors[extractor].extract_features(source_splitted_path)
 			audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags
 
-		prompt = self.caption_generator.create_prompt(audio_tags)
-		caption = self.caption_generator.generate_caption(prompt)
-		audio_tags["caption"] = caption
+		if (self.enable_caption_generation):
+			prompt = self.caption_generator.create_prompt(audio_tags)
+			caption = self.caption_generator.generate_caption(prompt)
+			audio_tags["caption"] = caption
 		audio_tags["location"] = snippet_path
 		return audio_tags
 
