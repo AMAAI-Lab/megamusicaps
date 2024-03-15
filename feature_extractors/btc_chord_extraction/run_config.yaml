@@ -1,6 +1,6 @@
 mp3:
   song_hz: 22050
-  inst_len: 10.0
+  inst_len: 9.0
   skip_interval: 5.0
 
 feature:

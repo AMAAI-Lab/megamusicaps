@@ -9,7 +9,9 @@ All important and notable changes to the megamusicaps projects
 
 ⚡️ Changed
 -----------
+
 * caption_generator.py: Added examples of output to prompt to improve generated captions from GPT
+* In btc chord extractor configs, reduce inst len to 9 as some audio files can be slightly lesser than 10 seconds (musicaps) .This will prevent chord extraction failures for shorter files.
 
 
 0.0.6 (2024-01-27)
