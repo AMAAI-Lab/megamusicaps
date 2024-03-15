@@ -4,6 +4,19 @@ Changelog
 
 All important and notable changes to the megamusicaps projects
 
+0.0.7 (2024-03-15)
+==================
+
+⚡️ Changed
+-----------
+
+* In main process, add tqdm progress bar for visualisation
+
+🛠️ Fixed
+---------
+
+* Catch any exceptions during a single caption generation error and continue for the rest of the paths
+
 0.0.6 (2024-01-27)
 ==================
 
