@@ -10,6 +10,7 @@ class FeatureExtractors(Enum):
 	BEATNET_EXTRACTOR = 6
 	BTC_CHORD_EXTRACTOR = 7
 	GENDER_CLASSIFIER = 8
+	KEY_CLASSIFIER = 9
 
 # Base class for feature extraction
 class FeatureExtractor:

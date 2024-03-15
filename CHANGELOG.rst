@@ -13,6 +13,10 @@ All important and notable changes to the megamusicaps projects
 * caption_generator.py: Added examples of output to prompt to improve generated captions from GPT
 * In btc chord extractor configs, reduce inst len to 9 as some audio files can be slightly lesser than 10 seconds (musicaps) .This will prevent chord extraction failures for shorter files.
 * In main process, add tqdm progress bar for visualisation
+* feature_extractor/btc_chord_extractor: Remove redundant prints and logging
+* feature_extractors/key_classification: Add key classification extractor class,inference code and models
+* main.py: Integrate key classification with main pipeline
+* caption_generator_config.yaml: Add key classifier configs to caption generator configs
 
 🛠️ Fixed
 ---------

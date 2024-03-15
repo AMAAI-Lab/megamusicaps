@@ -73,3 +73,7 @@
     "source": "vocals"
     "model": "/proj/megamusicaps/feature_extractors/gender_recognition/models/model.h5"
     "mel": True
+  "key_classifier":
+    "active": True
+    "source": "raw"
+    "model": "deepspec"
