@@ -55,7 +55,9 @@ class GenderClassifier(FeatureExtractor):
 
     def extract_features(self, audio_path):
         audio_features = self.extract_intermediate_features(audio_path, self.config).reshape(1, -1)
-        male_prob = self.model.predict(audio_features)[0][0]
+        gender_probabilities = self.model.predict(audio_features)
+        self.features["probabilities"] = gender_probabilities
+        male_prob = gender_probabilities[0][0]
         if male_prob < 0.30 or male_prob > 0.70:
             female_prob = 1 - male_prob
             gender = "male" if male_prob > female_prob else "female"
