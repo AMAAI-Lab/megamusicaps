@@ -17,7 +17,9 @@ class KeyClassificationExtractor(FeatureExtractor):
 		return self.tag_type
 
 	def extract_features(self, audio_path):
-		return self.get_key(audio_path)
+		result = self.get_key(audio_path)
+		self.features = self.classifier.get_features()
+		return result
 
 	def get_source(self):
 		return self.source
