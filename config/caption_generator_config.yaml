@@ -30,24 +30,32 @@
     "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "save_features": True
+    "format": "npy"
   "genre_extractor":
     "active": True
     "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_genre-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "save_features": True
+    "format": "npy"
   "instrument_extractor":
     "active": True
     "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_instrument-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "save_features": True
+    "format": "npy"
   "voice_extractor":
     "active": True
     "source": "raw"
     "model": "/proj/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/voice_instrumental-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "save_features": True
+    "format": "npy"
   "gender_extractor":
     "active": False
     "source": "vocals"
@@ -60,6 +68,8 @@
     "model": "/proj/megamusicaps/essentia_models/mtt-discogs-effnet-1.pb"
     "model_metadata": "/proj/megamusicaps/essentia_models/mtt-discogs-effnet-1.json"
     "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "save_features": True
+    "format": "npy"
   "beatnet_extractor":
     "active": True
     "source": "drums"
@@ -72,12 +82,18 @@
     "source": "other"
     "model": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/test/btc_model.pt"
     "config_file": "/proj/megamusicaps/feature_extractors/btc_chord_extraction/run_config.yaml"
+    "save_features": True
+    "format": "npy"
   "gender_classifier":
     "active": True
     "source": "vocals"
     "model": "/proj/megamusicaps/feature_extractors/gender_recognition/models/model.h5"
     "mel": True
+    "save_features": True
+    "format": "npy"
   "key_classifier":
     "active": True
     "source": "raw"
     "model": "deepspec"
+    "save_features": True
+    "format": "npy"
