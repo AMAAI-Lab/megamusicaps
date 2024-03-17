@@ -8,6 +8,7 @@ class BeatNetExtractor(FeatureExtractor):
 	def __init__(self, tag_type, model, config):
 		self.tag_type = tag_type
 		self.model = model
+		self.config = config
 		self.mode = config["mode"]
 		self.plot = config["plot"]
 		self.thread = config["thread"]

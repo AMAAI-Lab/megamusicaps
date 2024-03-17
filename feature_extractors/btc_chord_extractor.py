@@ -15,20 +15,20 @@ use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
 
 class BTCChordExtractor(FeatureExtractor):
-	def __init__(self, tag_type, model, config_file = "./btc_chord_extraction/run_config.yaml", audio_dir='./btc_chord_extraction/test', save_dir='./btc_chord_extraction/test', voca=False):
-		super().__init__(model)
+	def __init__(self, tag_type, model, config, config_file = "./btc_chord_extraction/run_config.yaml", audio_dir='./btc_chord_extraction/test', save_dir='./btc_chord_extraction/test', voca=False):
+		super().__init__(tag_type, model, config)
 		self.tag_type = tag_type
 		self.audio_dir = audio_dir
 		self.save_dir = save_dir
 		self.voca = voca
-		# self.config = config
-		self.config = HParams.load(config_file)
+		self.config = config
+		self.module_config = HParams.load(config_file)
 		self._configure_model(model)
 
 	def _configure_model(self, model):
 		if self.voca:
-			self.config.feature['large_voca'] = True
-			self.config.model['num_chords'] = 170
+			self.module_config.feature['large_voca'] = True
+			self.module_config.model['num_chords'] = 170
 			model_file = f'{self.save_dir}/btc_model_large_voca.pt'
 			idx_to_chord = idx2voca_chord()
 			logger.info("label type: large voca")
@@ -37,7 +37,7 @@ class BTCChordExtractor(FeatureExtractor):
 			self.idx_to_chord = idx2chord
 			logger.info("label type: Major and minor")
 
-		self.model = BTC_model(config=self.config.model).to(device)
+		self.model = BTC_model(config=self.module_config.model).to(device)
 
 		# Load model
 		if os.path.isfile(model):
@@ -49,13 +49,13 @@ class BTCChordExtractor(FeatureExtractor):
 
 	def extract_features(self, audio_path):
 		# logger.info("Processing audio file: %s" % audio_path)
-		feature, feature_per_second, song_length_second = audio_file_to_features(audio_path, self.config)
+		feature, feature_per_second, song_length_second = audio_file_to_features(audio_path, self.module_config)
 		# logger.info("Audio file loaded and feature computation success : %s" % audio_path)
 
 		feature = feature.T
 		feature = (feature - self.mean) / self.std
 		time_unit = feature_per_second
-		n_timestep = self.config.model['timestep']
+		n_timestep = self.module_config.model['timestep']
 
 		num_pad = n_timestep - (feature.shape[0] % n_timestep)
 		feature = np.pad(feature, ((0, num_pad), (0, 0)), mode="constant", constant_values=0)

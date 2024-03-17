@@ -5,8 +5,9 @@ import json
 import numpy as np
 
 class EssentiaFeatureExtractor(FeatureExtractor):
-	def __init__(self, tag_type, model_path, model_metadata_path, embedding_model, max_num_tags = 5, tag_threshold = 0.1):
+	def __init__(self, tag_type, model_path, config, model_metadata_path, embedding_model, max_num_tags = 5, tag_threshold = 0.1):
 		self.tag_type = tag_type
+		self.config = config
 		self.model_path = model_path
 		self.model_metadata_path = model_metadata_path
 		self.model, self.model_metadata = self.load_model(model_path, model_metadata_path)

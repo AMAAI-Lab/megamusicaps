@@ -6,7 +6,7 @@ from .gender_recognition.utils import create_model
 
 class GenderClassifier(FeatureExtractor):
     def __init__(self, tag_type, model, config):
-        super().__init__(model)
+        super().__init__(tag_type, model, config)
         self.tag_type = tag_type
         self.config = config
 

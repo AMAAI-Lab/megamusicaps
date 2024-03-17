@@ -7,7 +7,7 @@ from .key_classification.feature import read_features
 
 class KeyClassificationExtractor(FeatureExtractor):
 	def __init__(self, tag_type, model, config):
-		super().__init__(model)
+		super().__init__(tag_type, model, config)
 		self.tag_type = tag_type
 		self.model = model
 		self.config = config
