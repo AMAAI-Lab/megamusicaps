@@ -66,10 +66,12 @@ class BTCChordExtractor(FeatureExtractor):
 		with torch.no_grad():
 			self.model.eval()
 			feature = torch.tensor(feature, dtype=torch.float32).unsqueeze(0).to(device)
+			self.features["prediction"] = np.array([])
 			for t in range(num_instance):
 				self_attn_output, _ = self.model.self_attn_layers(feature[:, n_timestep * t:n_timestep * (t + 1), :])
 				prediction, _ = self.model.output_layer(self_attn_output)
 				prediction = prediction.squeeze()
+				self.features["prediction"] = np.concatenate([self.features["prediction"], prediction])
 				for i in range(n_timestep):
 					if t == 0 and i == 0:
 						prev_chord = prediction[i].item()
