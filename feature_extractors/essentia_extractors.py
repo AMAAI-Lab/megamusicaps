@@ -18,6 +18,8 @@ class EssentiaFeatureExtractor(FeatureExtractor):
 		self.max_num_tags = max_num_tags
 		self.tag_threshold = tag_threshold
 
+		self.features = {}
+
 	def load_model(self, model_path, model_metadata_path):
 		with open(model_metadata_path, 'r') as json_file:
 			metadata = json.load(json_file)
@@ -46,6 +48,7 @@ class EssentiaFeatureExtractor(FeatureExtractor):
 	def get_tags(self, embeddings):
 		predictions = self.model(embeddings)
 		mean_act=np.mean(predictions,0)
+		self.features["mean_act"] = mean_act
 
 		ind = np.argpartition(mean_act, -self.max_num_tags)[-self.max_num_tags:]
 
@@ -77,6 +80,7 @@ class EssentiaVoiceExtractor(EssentiaFeatureExtractor):
 	def get_tags(self, embeddings):
 		predictions = self.model(embeddings)
 		mean_act=np.mean(predictions,0)
+		self.features["mean_act"] = mean_act
 
 		ind = np.argmax(mean_act)
 		tag=self.model_metadata['classes'][ind]
