@@ -144,6 +144,11 @@ class MusicCaptioner:
 				source_splitted_path = snippet_path
 
 			feature_tags = self.feature_extractors[extractor].extract_features(source_splitted_path)
+			if self.feature_extractors[extractor].get_config_value("save_features", False):
+				features_dir = self.saved_features_dir + "/" + os.path.splitext(os.path.basename(snippet_path))[0] + "/"
+				if not os.path.exists(features_dir):
+					os.makedirs(features_dir)
+				self.feature_extractors[extractor].save_extracted_features(features_dir)
 			audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags
 
 		if (self.enable_caption_generation):
