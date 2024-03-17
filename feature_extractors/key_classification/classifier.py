@@ -40,6 +40,8 @@ class KeyClassifier:
         :param model_name: model name from sub-package models. E.g. 'deepspec', 'shallowspec', or 'deepsquare'
         """
 
+        self.features = {}
+
         def to_major_minor_key(index):
 
             if not np.isscalar(index):
@@ -138,8 +140,12 @@ class KeyClassifier:
         """
         prediction = self.estimate(data)
         averaged_prediction = np.average(prediction, axis=0)
+        self.features["averaged_prediction"] = averaged_prediction
         index = np.argmax(averaged_prediction)
         return self.to_key(index)
+
+    def get_features(self):
+        return self.features
 
 
 def _to_model_resource(model_name):
