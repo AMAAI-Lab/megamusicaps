@@ -7,6 +7,7 @@
   "temp": "/proj/megamusicaps/files/temp/"
   "source_separated_audio": "/proj/megamusicaps/files/source_separated_audio"
   "split_audio": "/proj/megamusicaps/files/split_audio"
+  "saved_features": "/proj/megamusicaps/output" 
 
 "preprocess":
   "split":

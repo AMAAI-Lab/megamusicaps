@@ -30,6 +30,7 @@ class MusicCaptioner:
 		self.input_file_path = self.configs["files"]["input"]
 		self.output_file_path = self.configs["files"]["output"]
 		self.source_separated_file_dir = self.configs["paths"]["source_separated_audio"]
+		self.saved_features_dir = self.configs["paths"]["saved_features"]
 
 		self.temp_file_path = self.configs["paths"]["temp"]
 
