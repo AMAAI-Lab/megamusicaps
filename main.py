@@ -37,7 +37,7 @@ class MusicCaptioner:
 		self.feature_extractors = []
 
 		if self.configs["extractors"]["mood_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.MOOD_EXTRACTOR.value, EssentiaFeatureExtractor("mood", self.configs["extractors"]["mood_extractor"]["model"], self.configs["extractors"]["mood_extractor"]["model_metadata"], self.configs["extractors"]["mood_extractor"]["embedding_model"], 5, 0.1))
+			self.feature_extractors.insert(FeatureExtractors.MOOD_EXTRACTOR.value, EssentiaFeatureExtractor("mood", self.configs["extractors"]["mood_extractor"]["model"], self.configs["extractors"]["mood_extractor"], self.configs["extractors"]["mood_extractor"]["model_metadata"], self.configs["extractors"]["mood_extractor"]["embedding_model"], 5, 0.1))
 			if ("source" in self.configs["extractors"]["mood_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.MOOD_EXTRACTOR.value].set_source(self.configs["extractors"]["mood_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.MOOD_EXTRACTOR.value)
@@ -45,7 +45,7 @@ class MusicCaptioner:
 			self.feature_extractors.insert(FeatureExtractors.MOOD_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["genre_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.GENRE_EXTRACTOR.value, EssentiaFeatureExtractor("genre", self.configs["extractors"]["genre_extractor"]["model"], self.configs["extractors"]["genre_extractor"]["model_metadata"], self.configs["extractors"]["genre_extractor"]["embedding_model"], 4, 0.1))
+			self.feature_extractors.insert(FeatureExtractors.GENRE_EXTRACTOR.value, EssentiaFeatureExtractor("genre", self.configs["extractors"]["genre_extractor"]["model"], self.configs["extractors"]["genre_extractor"], self.configs["extractors"]["genre_extractor"]["model_metadata"], self.configs["extractors"]["genre_extractor"]["embedding_model"], 4, 0.1))
 			if ("source" in self.configs["extractors"]["genre_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.GENRE_EXTRACTOR.value].set_source(self.configs["extractors"]["genre_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.GENRE_EXTRACTOR.value)
@@ -53,7 +53,7 @@ class MusicCaptioner:
 			self.feature_extractors.insert(FeatureExtractors.GENRE_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["instrument_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.INSTRUMENT_EXTRACTOR.value, EssentiaFeatureExtractor("instrument", self.configs["extractors"]["instrument_extractor"]["model"], self.configs["extractors"]["instrument_extractor"]["model_metadata"], self.configs["extractors"]["instrument_extractor"]["embedding_model"], 7, 0.1))
+			self.feature_extractors.insert(FeatureExtractors.INSTRUMENT_EXTRACTOR.value, EssentiaFeatureExtractor("instrument", self.configs["extractors"]["instrument_extractor"]["model"], self.configs["extractors"]["instrument_extractor"], self.configs["extractors"]["instrument_extractor"]["model_metadata"], self.configs["extractors"]["instrument_extractor"]["embedding_model"], 7, 0.1))
 			if ("source" in self.configs["extractors"]["instrument_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.INSTRUMENT_EXTRACTOR.value].set_source(self.configs["extractors"]["instrument_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.INSTRUMENT_EXTRACTOR.value)
@@ -61,7 +61,7 @@ class MusicCaptioner:
 			self.feature_extractors.insert(FeatureExtractors.INSTRUMENT_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["auto_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.AUTO_EXTRACTOR.value, EssentiaFeatureExtractor("autotags", self.configs["extractors"]["auto_extractor"]["model"], self.configs["extractors"]["auto_extractor"]["model_metadata"], self.configs["extractors"]["auto_extractor"]["embedding_model"], 8, 0.1))
+			self.feature_extractors.insert(FeatureExtractors.AUTO_EXTRACTOR.value, EssentiaFeatureExtractor("autotags", self.configs["extractors"]["auto_extractor"]["model"], self.configs["extractors"]["auto_extractor"], self.configs["extractors"]["auto_extractor"]["model_metadata"], self.configs["extractors"]["auto_extractor"]["embedding_model"], 8, 0.1))
 			if ("source" in self.configs["extractors"]["auto_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.AUTO_EXTRACTOR.value].set_source(self.configs["extractors"]["auto_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.AUTO_EXTRACTOR.value)
@@ -69,7 +69,7 @@ class MusicCaptioner:
 			self.feature_extractors.insert(FeatureExtractors.AUTO_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["voice_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.VOICE_EXTRACTOR.value, EssentiaVoiceExtractor("voice", self.configs["extractors"]["voice_extractor"]["model"], self.configs["extractors"]["voice_extractor"]["model_metadata"], self.configs["extractors"]["voice_extractor"]["embedding_model"]))
+			self.feature_extractors.insert(FeatureExtractors.VOICE_EXTRACTOR.value, EssentiaVoiceExtractor("voice", self.configs["extractors"]["voice_extractor"]["model"], self.configs["extractors"]["voice_extractor"], self.configs["extractors"]["voice_extractor"]["model_metadata"], self.configs["extractors"]["voice_extractor"]["embedding_model"]))
 			if ("source" in self.configs["extractors"]["voice_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.VOICE_EXTRACTOR.value].set_source(self.configs["extractors"]["voice_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.VOICE_EXTRACTOR.value)
@@ -77,7 +77,7 @@ class MusicCaptioner:
 			self.feature_extractors.insert(FeatureExtractors.VOICE_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["gender_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.GENDER_EXTRACTOR.value, EssentiaVoiceExtractor("gender", self.configs["extractors"]["gender_extractor"]["model"], self.configs["extractors"]["gender_extractor"]["model_metadata"], self.configs["extractors"]["gender_extractor"]["embedding_model"]))
+			self.feature_extractors.insert(FeatureExtractors.GENDER_EXTRACTOR.value, EssentiaVoiceExtractor("gender", self.configs["extractors"]["gender_extractor"]["model"], self.configs["extractors"]["gender_extractor"], self.configs["extractors"]["gender_extractor"]["model_metadata"], self.configs["extractors"]["gender_extractor"]["embedding_model"]))
 			if ("source" in self.configs["extractors"]["gender_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.GENDER_EXTRACTOR.value].set_source(self.configs["extractors"]["gender_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.GENDER_EXTRACTOR.value)
@@ -93,7 +93,7 @@ class MusicCaptioner:
 			self.feature_extractors.insert(FeatureExtractors.BEATNET_EXTRACTOR.value, None)
 
 		if self.configs["extractors"]["btc_chord_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.BTC_CHORD_EXTRACTOR.value, BTCChordExtractor("chords", self.configs["extractors"]["btc_chord_extractor"]["model"], self.configs["extractors"]["btc_chord_extractor"]["config_file"]))
+			self.feature_extractors.insert(FeatureExtractors.BTC_CHORD_EXTRACTOR.value, BTCChordExtractor("chords", self.configs["extractors"]["btc_chord_extractor"]["model"], self.configs["extractors"]["btc_chord_extractor"], self.configs["extractors"]["btc_chord_extractor"]["config_file"]))
 			if ("source" in self.configs["extractors"]["btc_chord_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.BTC_CHORD_EXTRACTOR.value].set_source(self.configs["extractors"]["btc_chord_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.BTC_CHORD_EXTRACTOR.value)
