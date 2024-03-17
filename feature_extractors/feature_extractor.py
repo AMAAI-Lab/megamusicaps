@@ -14,10 +14,12 @@ class FeatureExtractors(Enum):
 
 # Base class for feature extraction
 class FeatureExtractor:
-	def __init__(self, model):
+	def __init__(self, tag_type, model, config):
 		self.features = {}
 		self.model = model
+		self.config = config
 		self.source = "raw"
+		self.tag_type = tag_type
 
 	def get_tag_type(self):
 		raise NotImplementedError("Subclasses must implement this method")
@@ -30,6 +32,12 @@ class FeatureExtractor:
 			self.source = "raw"
 		else:
 			self.source = source
+
+	def get_config_value(self, key, default):
+		if key in self.config.keys():
+			return self.config[key]
+		else:
+			return default
 
 	def get_source(self):
 		return self.source
