@@ -19,6 +19,7 @@ All important and notable changes to the megamusicaps projects
 ---------
 
 feature_extractors/key_classification: Load model file directly instead of using pkgutils and keycnn. Otherwise it becomes a requirement to install keycnn into environment as a package instead of using the source code inside our code directly
+feature_extractors/btc_chord_extractor: Move predictions to cpu before concatenation to support running on gpu devices as well
 
 0.0.7 (2024-03-15)
 ==================
