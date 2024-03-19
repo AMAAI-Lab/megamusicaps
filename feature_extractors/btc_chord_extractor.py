@@ -71,7 +71,7 @@ class BTCChordExtractor(FeatureExtractor):
 				self_attn_output, _ = self.model.self_attn_layers(feature[:, n_timestep * t:n_timestep * (t + 1), :])
 				prediction, _ = self.model.output_layer(self_attn_output)
 				prediction = prediction.squeeze()
-				self.features["prediction"] = np.concatenate([self.features["prediction"], prediction])
+				self.features["prediction"] = np.concatenate([self.features["prediction"], prediction.cpu()])
 				for i in range(n_timestep):
 					if t == 0 and i == 0:
 						prev_chord = prediction[i].item()
