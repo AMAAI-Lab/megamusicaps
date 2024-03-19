@@ -33,12 +33,14 @@ class KeyClassifier:
     Classifier that can estimate musical key in different formats.
     """
 
-    def __init__(self, model_name='deepspec'):
+    def __init__(self, model_name='deepspec', root_dir='./feature_extractors/key_classification/'):
         """
         Initializes this classifier with a Keras model.
 
         :param model_name: model name from sub-package models. E.g. 'deepspec', 'shallowspec', or 'deepsquare'
         """
+        self.root_dir = root_dir
+        self.features = {}
 
         self.features = {}
 
@@ -104,6 +106,7 @@ class KeyClassifier:
         self.normalize = std_normalizer
 
         resource = _to_model_resource(model_name)
+        resource = self.root_dir + resource
         try:
             file = _extract_from_package(resource)
         except Exception as e:
@@ -158,7 +161,9 @@ def _to_model_resource(model_name):
 
 
 def _extract_from_package(resource):
-    data = pkgutil.get_data('keycnn', resource)
+    data = ''
+    with open(resource, 'rb') as file:
+        data = file.read()
     with tempfile.NamedTemporaryFile(prefix='model', suffix='.h5', delete=False) as f:
         f.write(data)
         name = f.name
