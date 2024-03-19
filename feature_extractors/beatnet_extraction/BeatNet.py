@@ -54,6 +54,7 @@ class BeatNet:
         self.inference_model = inference_model
         self.plot= plot
         self.thread = thread
+        self.features = {}
         self.device = device
         if plot and thread:
             raise RuntimeError('Plotting cannot be accomplished in the threading mode')
@@ -144,12 +145,15 @@ class BeatNet:
                     raise RuntimeError('The infernece model should be set to "DBN" for the offline mode!')
                 if isinstance(audio_path, str) or audio_path.all()!=None:
                     preds = self.activation_extractor_online(audio_path)    # Using BeatNet causal Neural network to extract activations
+                    self.features["prediction"] = preds
                     output = self.estimator(preds)  # Using DBN offline inference to infer beat/downbeats
                     return output
         
                 else:
                     raise RuntimeError('An audio object or file directory is required for the offline usage!')
-                
+
+    def get_features(self):
+        return self.features
 
     def activation_extractor_stream(self):
         # TODO: 

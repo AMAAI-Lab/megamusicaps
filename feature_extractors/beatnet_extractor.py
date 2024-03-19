@@ -17,6 +17,7 @@ class BeatNetExtractor(FeatureExtractor):
 
 	def extract_features(self, audio_path):
 		beats = self.get_beats(audio_path)
+		self.features = self.estimator.get_features()
 		bpm, repeating_pattern, inflection_points = self.identify_pattern(beats)
 
 		tags = dict()
