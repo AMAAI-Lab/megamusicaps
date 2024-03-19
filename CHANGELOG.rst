@@ -7,6 +7,14 @@ All important and notable changes to the megamusicaps projects
 0.0.8 (2024-03-19)
 ==================
 
+✨ Added
+---------
+
+* Source code for beatnet library into feature extractors. This is done because the exposed apis don't output the preds and therefore it is not possible to save the features without modifying the source code
+* Modified beatnet source code functionality to expose retrieval of last prediction features
+* Add functionality to save beatnet predicted features to a file
+* Update config file to enable beat feature saving to file by default
+
 🛠️ Fixed
 ---------
 
