@@ -14,6 +14,7 @@ All important and notable changes to the megamusicaps projects
 * Modified beatnet source code functionality to expose retrieval of last prediction features
 * Add functionality to save beatnet predicted features to a file
 * Update config file to enable beat feature saving to file by default
+* Add saved feature files for all samples to output folder
 
 🛠️ Fixed
 ---------
