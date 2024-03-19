@@ -77,6 +77,8 @@
     "mode": "offline"
     "plot": []
     "thread": False
+    "save_features": True
+    "format": "npy"
   "btc_chord_extractor":
     "active": True
     "source": "other"
