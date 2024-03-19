@@ -2,7 +2,7 @@ from .feature_extractor import FeatureExtractor
 import numpy as np
 from scipy.signal import find_peaks, correlate
 
-from BeatNet.BeatNet import BeatNet
+from .beatnet_extraction.BeatNet import BeatNet
 
 class BeatNetExtractor(FeatureExtractor):
 	def __init__(self, tag_type, model, config):
