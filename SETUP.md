@@ -11,6 +11,7 @@ The repository has been tested with the following environment set up. To recreat
 
 ### Additional installations (in order of installation)
 
+```
 pip install essentia
 pip install -f https://essentia.upf.edu/python-wheels/ essentia-tensorflow
 pip install librosa
@@ -44,8 +45,10 @@ pip uninstall librosa
 pip install librosa==0.6.2
 pip uninstall resampy numba
 pip install numba==0.48 resampy
-
+```
 
 ### ENVIRONMENT VARIABLES
 
+```
 export TF_FORCE_GPU_ALLOW_GROWTH=true
+```
