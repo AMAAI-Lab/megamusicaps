@@ -1,6 +1,6 @@
 # Mega Music Captions
 
-[![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v0.0.6-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
+[![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v0.0.9-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
 
 This repository contains scripts for generating captions for audio snippets using a combination of feature extraction and natural language processing. The system utilizes Essentia for audio feature extraction and OpenAI's GPT-3.5 Turbo for caption generation.
 
@@ -116,3 +116,22 @@ The configuration file includes settings for input/output paths, feature extract
 			model_metadata:  "/path/to/mood_model_metadata.json"
 			embedding_model:  "/path/to/embedding_model.pb"
 	# Add configurations for other extractors (genre, instrument, voice, gender, auto)...
+
+
+### 6. Visualiser
+
+The generated captions can be easily visualised using the following command
+
+```
+python display_tags.py files/captions.json (directory_with_megamusicaps_repo)/megamusicaps/
+```
+
+the requirements to run this are the following packages
+- argparse
+- tkinter
+- pygame
+- json
+
+This will open a simple gui that can display the extracted feature values as stored in the captions.json, while playing the music.
+
+There are buttons available to flipping to next or previous audio. Additionally there is a button to restart the audio if required.

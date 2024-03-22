@@ -4,6 +4,16 @@ Changelog
 
 All important and notable changes to the megamusicaps projects
 
+0.0.9 (2024-03-22)
+==================
+
+⚡️ Changed
+-----------
+
+* Updated sample extracted tags with key values and changed location from absolute path to relative path
+* Visualiser displays the features instead of the GPT generated captions for verification
+
+
 0.0.8 (2024-03-19)
 ==================
 
