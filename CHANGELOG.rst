@@ -7,6 +7,10 @@ All important and notable changes to the megamusicaps projects
 0.0.9 (2024-03-22)
 ==================
 
+✨ Added
+---------
+* Add environment set up document
+
 ⚡️ Changed
 -----------
 
