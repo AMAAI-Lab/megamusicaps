@@ -165,6 +165,8 @@ class Preprocess():
 
             original_wav, sr = librosa.load(os.path.join(mp3_path), sr=mp3_config['song_hz'])
 
+            duration = librosa.get_duration(y=original_wav, sr=sr)
+
             # make result path if not exists
             # save_path, mp3_string, feature_string, song_name, aug.pt
             result_path = os.path.join(save_path, mp3_str, feature_str, song_name.strip())
@@ -208,13 +210,13 @@ class Preprocess():
                     current_start_second = 0
 
                     # get chord list between current_start_second and current+song_length
-                    while current_start_second + mp3_config['inst_len'] < origin_length_in_sec:
+                    while current_start_second + duration < origin_length_in_sec:
                         inst_start_sec = current_start_second
                         curSec = current_start_second
 
                         chord_list = []
                         # extract chord per 1/self.time_interval
-                        while curSec < inst_start_sec + mp3_config['inst_len']:
+                        while curSec < inst_start_sec + duration:
                             try:
                                 available_chords = chord_info.loc[(chord_info['start'] <= curSec) & (
                                         chord_info['end'] > curSec + self.time_interval)].copy()
@@ -254,7 +256,7 @@ class Preprocess():
                         if len(chord_list) == self.no_of_chord_datapoints_per_sequence:
                             try:
                                 sequence_start_time = current_start_second
-                                sequence_end_time = current_start_second + mp3_config['inst_len']
+                                sequence_end_time = current_start_second + duration
 
                                 start_index = int(sequence_start_time * mp3_config['song_hz'])
                                 end_index = int(sequence_end_time * mp3_config['song_hz'])
@@ -262,7 +264,7 @@ class Preprocess():
                                 song_seq = x[start_index:end_index]
 
                                 etc = '%.1f_%.1f' % (
-                                    current_start_second, current_start_second + mp3_config['inst_len'])
+                                    current_start_second, current_start_second + duration)
                                 aug = '%.2f_%i' % (stretch_factor, shift_factor)
 
                                 if self.feature_name == FeatureTypes.cqt:
@@ -328,6 +330,8 @@ class Preprocess():
 
             original_wav, sr = librosa.load(os.path.join(mp3_path), sr=mp3_config['song_hz'])
 
+            duration = librosa.get_duration(y=original_wav, sr=sr)
+
             # save_path, mp3_string, feature_string, song_name, aug.pt
             result_path = os.path.join(save_path, mp3_str, feature_str, song_name.strip())
             if not os.path.exists(result_path):
@@ -377,13 +381,13 @@ class Preprocess():
                     current_start_second = 0
 
                     # get chord list between current_start_second and current+song_length
-                    while current_start_second + mp3_config['inst_len'] < origin_length_in_sec:
+                    while current_start_second + duration < origin_length_in_sec:
                         inst_start_sec = current_start_second
                         curSec = current_start_second
 
                         chord_list = []
                         # extract chord per 1/self.time_interval
-                        while curSec < inst_start_sec + mp3_config['inst_len']:
+                        while curSec < inst_start_sec + duration:
                             try:
                                 available_chords = chord_info.loc[(chord_info['start'] <= curSec) & (chord_info['end'] > curSec + self.time_interval)].copy()
                                 if len(available_chords) == 0:
@@ -418,7 +422,7 @@ class Preprocess():
                         if len(chord_list) == self.no_of_chord_datapoints_per_sequence:
                             try:
                                 sequence_start_time = current_start_second
-                                sequence_end_time = current_start_second + mp3_config['inst_len']
+                                sequence_end_time = current_start_second + duration
 
                                 start_index = int(sequence_start_time * mp3_config['song_hz'])
                                 end_index = int(sequence_end_time * mp3_config['song_hz'])
@@ -426,7 +430,7 @@ class Preprocess():
                                 song_seq = x[start_index:end_index]
 
                                 etc = '%.1f_%.1f' % (
-                                    current_start_second, current_start_second + mp3_config['inst_len'])
+                                    current_start_second, current_start_second + duration)
                                 aug = '%.2f_%i' % (stretch_factor, shift_factor)
 
                                 if self.feature_name == FeatureTypes.cqt:
