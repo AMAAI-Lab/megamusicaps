@@ -4,6 +4,14 @@ Changelog
 
 All important and notable changes to the megamusicaps projects
 
+0.0.10 (2024-03-23)
+===================
+
+🛠️ Fixed
+---------
+
+* Chord extractor inst length defined by length of audio rather than fixed value, allowing inference of chords on full audio, as well as preventing crashes when audio is shorter than fixed length
+
 0.0.9 (2024-03-22)
 ==================
 

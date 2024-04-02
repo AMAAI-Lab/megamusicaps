@@ -1,6 +1,6 @@
 # Mega Music Captions
 
-[![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v0.0.9-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
+[![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v0.0.10-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
 
 This repository contains scripts for generating captions for audio snippets using a combination of feature extraction and natural language processing. The system utilizes Essentia for audio feature extraction and OpenAI's GPT-3.5 Turbo for caption generation.
 
