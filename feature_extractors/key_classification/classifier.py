@@ -53,7 +53,7 @@ class KeyClassifier:
             midi = index + 12
             if minor:
                 midi = index - 12
-            tonic = librosa.midi_to_note(midi=midi, octave=False)
+            tonic = librosa.midi_to_note(midi, octave=False)
             mode = 'minor' if minor else 'major'
             return tonic, mode
 
