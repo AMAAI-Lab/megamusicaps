@@ -27,9 +27,8 @@
   "mood_extractor":
     "active": True
     "source": "raw"
-    "model": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.pb"
-    "model_metadata": "/proj/megamusicaps/essentia_models/mtg_jamendo_moodtheme-discogs-effnet-1.json"
-    "embedding_model": "/proj/megamusicaps/essentia_models/discogs-effnet-bs64-1.pb"
+    "model": "/proj/megamusicaps/feature_extractors/noisy_student_extraction/model_weights/short-normal.pth"
+    "model_metadata": "/proj/megamusicaps/feature_extractors/noisy_student_extraction/moodtheme_split.txt"
     "save_features": True
     "format": "npy"
   "genre_extractor":

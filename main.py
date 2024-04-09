@@ -3,6 +3,7 @@ from feature_extractors.essentia_extractors import EssentiaFeatureExtractor, Ess
 from feature_extractors.beatnet_extractor import BeatNetExtractor
 from feature_extractors.btc_chord_extractor import BTCChordExtractor
 from feature_extractors.key_classification_extractor import KeyClassificationExtractor
+from feature_extractors.noisy_student_emotion_extractor import NoisyStudentExtractor
 
 import os
 
@@ -38,7 +39,7 @@ class MusicCaptioner:
 		self.feature_extractors = []
 
 		if self.configs["extractors"]["mood_extractor"]["active"] :
-			self.feature_extractors.insert(FeatureExtractors.MOOD_EXTRACTOR.value, EssentiaFeatureExtractor("mood", self.configs["extractors"]["mood_extractor"]["model"], self.configs["extractors"]["mood_extractor"], self.configs["extractors"]["mood_extractor"]["model_metadata"], self.configs["extractors"]["mood_extractor"]["embedding_model"], 5, 0.1))
+			self.feature_extractors.insert(FeatureExtractors.MOOD_EXTRACTOR.value, NoisyStudentExtractor("mood", self.configs["extractors"]["mood_extractor"]["model"], self.configs["extractors"]["mood_extractor"], self.configs["extractors"]["mood_extractor"]["model_metadata"], 5, 0.1))
 			if ("source" in self.configs["extractors"]["mood_extractor"].keys()):
 				self.feature_extractors[FeatureExtractors.MOOD_EXTRACTOR.value].set_source(self.configs["extractors"]["mood_extractor"]["source"])
 			self.active_extractors.append(FeatureExtractors.MOOD_EXTRACTOR.value)
@@ -133,7 +134,7 @@ class MusicCaptioner:
 				audio_paths.append(audio_path["location"])
 		return audio_paths
 
-	def caption_audio(self, snippet_path):
+	def caption_audio(self, snippet_path, is_test_mode=False):
 		audio_tags = {}
 		for extractor in self.active_extractors:
 			if not self.feature_extractors[extractor].get_source() == "raw":
@@ -152,9 +153,12 @@ class MusicCaptioner:
 			audio_tags[self.feature_extractors[extractor].get_tag_type()] = feature_tags
 
 		if (self.enable_caption_generation):
-			prompt = self.caption_generator.create_prompt(audio_tags)
-			caption = self.caption_generator.generate_caption(prompt)
-			audio_tags["caption"] = caption
+			if (is_test_mode):
+				audio_tags["caption"] = audio_tags
+			else:
+				prompt = self.caption_generator.create_prompt(audio_tags)
+				caption = self.caption_generator.generate_caption(prompt)
+				audio_tags["caption"] = caption
 		audio_tags["location"] = snippet_path
 		return audio_tags
 
@@ -162,11 +166,7 @@ class MusicCaptioner:
 		audio_paths = self.get_audio_paths(self.input_file_path)
 		audio_tags = []
 		for audio_path in tqdm(audio_paths, desc="Captioning Progress", unit="audio"):
-			try:
-				caption = self.caption_audio(audio_path)
-			except:
-				print("Error captioning : ", audio_path)
-				caption = {"location": audio_path, "caption": "!!!Error"}
+			caption = self.caption_audio(audio_path, is_test_mode=True)
 			audio_tags.append(caption)
 		return audio_tags
 
