@@ -1,8 +1,36 @@
 # Mega Music Captions
 
-[![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v0.0.10-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
+[![Status](https://img.shields.io/badge/status-stable-green.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
 
-This repository contains scripts for generating captions for audio snippets using a combination of feature extraction and natural language processing. The system utilizes Essentia for audio feature extraction and OpenAI's GPT-3.5 Turbo for caption generation.
+## Description
+
+Mega Music Captions is a tool for analyzing various musical features from audio clips and generating descriptions based on that analysis. It extracts details like key, chord progression, tempo, and genre, and can tell the difference between vocal and instrumental sections. It also creates simple captions describing the music using a natural language model.
+
+The system is modular, so you can easily turn different features on or off and customize the captions with different APIs. Whether you're using it for research, creative projects, or just to better understand music, Mega Music Captions offers a practical way to analyze and describe audio.
+
+## Features and Models
+
+Mega Music Captions uses advanced models for different music analysis tasks. Here's a quick rundown of the main features:
+
+1. **Key Detection**: 
+   - **Model**: CNNs with Directional Filters ([Schreiber and Müller, 2019](https://github.com/hendriks73/key-cnn))
+   - **Description**: Identifies the key of the music using a CNN-based model.
+   
+2. **Chord Detection**:
+   - **Model**: Bidirectional Transformer ([Park et al., 2019](https://github.com/jayg996/BTC-ISMIR19))
+   - **Description**: Extracts chord sequences from the audio using deep auditory models and Conditional Random Fields.
+
+3. **Tempo Estimation & Downbeat Transcription**:
+   - **Model**: BeatNet: CRNN and Particle Filtering ([Heydari, Cwitkowitz, and Duan, 2021](https://github.com/mjhydri/BeatNet))
+   - **Description**: Estimates the tempo and identifies downbeats in the music.
+
+4. **Vocals / Instrumental Detection**:
+   - **Model**: EfficientNet trained on Discogs ([Essentia Library](https://essentia.upf.edu))
+   - **Description**: Classifies each clip as a track with vocals or an instrumental track
+
+5. **Instrument, Mood, and Genre Detection**:
+   - **Model**: Essentia's Jamendo Baseline Models ([Essentia Library](https://essentia.upf.edu))
+   - **Description**: Classifies instruments, mood/themes, and genres using CNN-based models.
 
 ## Usage
 
@@ -31,33 +59,19 @@ Unzip pre-trained weights
 unzip spleeter_pretrained_weights.zip
 ```
 
-### 2. Set Up Docker Container
+### 2. Set up environment
 
-Clone the docker image prepared with the required conda environment.
-```
-docker pull anuuu97c/megamusicaps:ubuntu_20.04_dev
-```
-
-Create a new docker container from the image. Ensure you replace '/path/to/dir/w/repository' with your parent folder of the repository
-
-```
-docker run -it --name megamusicaps_container -v /path/to/dir/w/repository:/proj megamusicaps:ubuntu_20.04_dev /bin/bash
-```
+Follow the steps mentioned in [SETUP.md](SETUP.md) to prepare a conda environment to be used for running the Mega Music Captions tool
 
 ### 3. Configuration
 
-Create / modify the configuration file (config/caption_generator_config.yaml) with the necessary parameters. Example configuration is provided in the configs section of this README.
+Create / modify the configuration file (config/caption_generator_config.yaml) with the necessary parameters. Example configuration file and details on configuration options are provided in the configs section of this README.
 
 ### 4. Run the Captioning System
 
 #### Environment
 
-Open an interactive terminal with the docker container
-```
-docker exec -it megamusicaps_container /bin/bash
-```
-
-Activate conda environment in the interactive terminal
+Activate conda environment in a new terminal
 ```
 conda activate megamusicaps
 ```

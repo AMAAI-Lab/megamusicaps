@@ -4,6 +4,14 @@ Changelog
 
 All important and notable changes to the megamusicaps projects
 
+1.0.0 (2024-09-05)
+==================
+
+⚡️ Changed
+-----------
+
+* Updated README with feature description and integrated model for that feature
+
 0.0.10 (2024-03-23)
 ===================
 
