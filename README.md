@@ -2,6 +2,8 @@
 
 [![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v0.0.10-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
 
+## IF YOU ARE LOOKING FOR MIRFLEX, PLEASE HEAD TO [THE LATEST REPO](https://github.com/AMAAI-Lab/mirflex). THIS REPOSITORY IS OUTDATED AND DEPRACATED. SORRY FOR THE INCONVENIENCE.
+
 This repository contains scripts for generating captions for audio snippets using a combination of feature extraction and natural language processing. The system utilizes Essentia for audio feature extraction and OpenAI's GPT-3.5 Turbo for caption generation.
 
 ## Usage
