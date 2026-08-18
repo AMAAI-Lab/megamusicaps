@@ -1,4 +1,5 @@
 # Mega Music Captions
+--depreciated
 
 [![Status](https://img.shields.io/badge/status-in%20development-orange.svg)](https://github.com/AMAAI-Lab/megamusicaps) [![Version](https://img.shields.io/badge/version-v0.0.10-blue.svg)](https://github.com/AMAAI-Lab/megamusicaps)
 
